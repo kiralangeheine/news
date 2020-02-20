@@ -1,0 +1,30 @@
+<h1>SUPER NEWS</h1>
+<section>
+    {{#articles}}
+        <form id="form_id" method="get" action="/article/{{jsonName}}">
+            <article class="article-teaser">
+                <div class="article-teaser__image">
+                    <input type="image" src={{teaserImageUrl}} alt="SubmitForm" />
+                </div>
+                <div class="article-teaser__headline">
+                    <h2 style="cursor: pointer" onClick='showDetails("\"{{jsonName}}\"")'>{{headline}}</h2>
+                </div>
+                <div class="article-teaser__text">
+                    <p style="cursor: pointer" onClick='showDetails("\"{{jsonName}}\"")'>{{teaserText}}</p>
+                </div>
+            </article>
+            <div class="line"></div>
+        </form>
+
+    {{/articles}}
+</section>
+
+<script>
+
+    function showDetails(jsonName) {
+        jsonName = jsonName.substring(1, jsonName.length-1);
+        document.getElementById("form_id").action = "/article/" + jsonName;
+        document.getElementById("form_id").submit();
+    }
+    
+</script>
